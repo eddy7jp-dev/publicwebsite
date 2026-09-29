@@ -1,0 +1,1054 @@
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Hub Fun! Studio | Hub Fun!</title>
+  <meta
+    name="description"
+    content="Hub Fun! Studioが開発する、推し活をもっと楽しく、もっと便利にするアプリ Hub Fun! の公式サイトです。"
+  >
+
+  <style>
+    :root {
+      --pink: #ff6fae;
+      --yellow: #ffd95a;
+      --mint: #67d9c4;
+      --blue: #70b7ff;
+      --purple: #9b8cff;
+      --dark: #34323b;
+      --text: #4a4852;
+      --white: #ffffff;
+      --bg: #fffafc;
+      --card: rgba(255,255,255,0.9);
+      --shadow: 0 12px 35px rgba(70, 50, 80, 0.10);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Noto Sans JP",
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255,111,174,.14), transparent 25%),
+        radial-gradient(circle at 90% 15%, rgba(112,183,255,.15), transparent 25%),
+        radial-gradient(circle at 50% 100%, rgba(103,217,196,.14), transparent 30%),
+        var(--bg);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =========================
+       Header
+    ========================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 14px 24px;
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.7);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 900;
+      letter-spacing: .03em;
+      color: var(--dark);
+    }
+
+    .logo span {
+      color: var(--pink);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      transition: .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--pink);
+    }
+
+    /* =========================
+       Hero
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      padding: 150px 24px 90px;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-inner {
+      width: 100%;
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 15px;
+      margin-bottom: 20px;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--pink);
+      font-size: .85rem;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 5.8rem);
+      line-height: 1;
+      letter-spacing: -.04em;
+      color: var(--dark);
+      margin-bottom: 25px;
+    }
+
+    .hero h1 .hub {
+      color: var(--pink);
+    }
+
+    .hero h1 .fun {
+      color: var(--purple);
+    }
+
+    .hero-copy {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #66636e;
+      margin-bottom: 32px;
+      max-width: 600px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      box-shadow: 0 10px 25px rgba(155,140,255,.28);
+    }
+
+    .button-secondary {
+      background: #fff;
+      color: var(--dark);
+      box-shadow: var(--shadow);
+    }
+
+    /* =========================
+       Hero visual
+    ========================= */
+
+    .hero-visual {
+      position: relative;
+      min-height: 450px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .blob {
+      position: absolute;
+      width: 330px;
+      height: 330px;
+      border-radius: 45% 55% 60% 40% / 55% 45% 55% 45%;
+      background: linear-gradient(
+        135deg,
+        #ffd8e8,
+        #ddd7ff,
+        #c9f5ed
+      );
+      animation: blob 8s ease-in-out infinite;
+    }
+
+    @keyframes blob {
+      0%,100% {
+        border-radius: 45% 55% 60% 40% / 55% 45% 55% 45%;
+        transform: rotate(0deg);
+      }
+      50% {
+        border-radius: 60% 40% 45% 55% / 40% 60% 45% 55%;
+        transform: rotate(8deg);
+      }
+    }
+
+    .phone {
+      position: relative;
+      width: 230px;
+      height: 460px;
+      padding: 10px;
+      border-radius: 36px;
+      background: #292832;
+      box-shadow:
+        0 30px 60px rgba(50,40,70,.25),
+        0 0 0 8px rgba(255,255,255,.5);
+      transform: rotate(4deg);
+    }
+
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 27px;
+      overflow: hidden;
+      background: linear-gradient(160deg, #fff8fb, #f3f0ff);
+      padding: 22px 15px;
+    }
+
+    .phone-title {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+
+    .mini-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 14px;
+      margin-bottom: 11px;
+      box-shadow: 0 6px 18px rgba(70,50,80,.08);
+    }
+
+    .mini-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 8px;
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+
+    .pink { background: #ffdce9; }
+    .yellow { background: #fff0ae; }
+    .mint { background: #d5f6ee; }
+    .blue { background: #dcecff; }
+
+    .mini-text {
+      display: inline-block;
+      vertical-align: top;
+      font-size: .78rem;
+      font-weight: 800;
+    }
+
+    .mini-text small {
+      display: block;
+      color: #99949e;
+      font-size: .65rem;
+      font-weight: 600;
+    }
+
+    .floating {
+      position: absolute;
+      padding: 13px 17px;
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      font-size: .82rem;
+      font-weight: 800;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .floating.one {
+      top: 55px;
+      right: 5px;
+      color: var(--pink);
+    }
+
+    .floating.two {
+      bottom: 55px;
+      left: 5px;
+      color: var(--mint);
+      animation-delay: -2s;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* =========================
+       Sections
+    ========================= */
+
+    section {
+      padding: 100px 24px;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+
+    .section-heading .label {
+      color: var(--pink);
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      margin-top: 8px;
+      color: var(--dark);
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.25;
+    }
+
+    .section-heading p {
+      margin: 15px auto 0;
+      max-width: 650px;
+      color: #77737d;
+    }
+
+    /* =========================
+       Concept
+    ========================= */
+
+    .concept {
+      position: relative;
+    }
+
+    .concept-box {
+      background: rgba(255,255,255,.85);
+      border-radius: 32px;
+      padding: 55px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .concept-box .big-copy {
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-weight: 900;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+
+    .concept-box .big-copy span {
+      color: var(--pink);
+    }
+
+    .concept-box p {
+      max-width: 750px;
+      margin: auto;
+      color: #6f6b75;
+    }
+
+    /* =========================
+       Features
+    ========================= */
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      padding: 30px 23px;
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow);
+      transition: transform .2s;
+    }
+
+    .feature:hover {
+      transform: translateY(-6px);
+    }
+
+    .feature-icon {
+      width: 62px;
+      height: 62px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      margin-bottom: 18px;
+    }
+
+    .feature:nth-child(1) .feature-icon {
+      background: #ffe0ec;
+    }
+
+    .feature:nth-child(2) .feature-icon {
+      background: #fff1b8;
+    }
+
+    .feature:nth-child(3) .feature-icon {
+      background: #d8f6ef;
+    }
+
+    .feature:nth-child(4) .feature-icon {
+      background: #dcecff;
+    }
+
+    .feature h3 {
+      color: var(--dark);
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    .feature p {
+      font-size: .9rem;
+      color: #77737d;
+    }
+
+    /* =========================
+       Studio
+    ========================= */
+
+    .studio-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      padding: 50px;
+      border-radius: 32px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,.95),
+          rgba(250,246,255,.95)
+        );
+      box-shadow: var(--shadow);
+    }
+
+    .studio-badge {
+      display: inline-block;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: #efeaff;
+      color: #7665d9;
+      font-size: .8rem;
+      font-weight: 900;
+      margin-bottom: 15px;
+    }
+
+    .studio-card h2 {
+      font-size: 2rem;
+      color: var(--dark);
+      margin-bottom: 15px;
+    }
+
+    .studio-card p {
+      color: #77737d;
+    }
+
+    .studio-message {
+      position: relative;
+      min-height: 250px;
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 30%, #ffd8e8 0 13%, transparent 14%),
+        radial-gradient(circle at 80% 70%, #d8f6ef 0 15%, transparent 16%),
+        radial-gradient(circle at 60% 25%, #dcecff 0 10%, transparent 11%),
+        #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .studio-message strong {
+      font-size: 2.1rem;
+      color: var(--dark);
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .studio-message strong span {
+      color: var(--pink);
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      padding-bottom: 110px;
+    }
+
+    .cta-box {
+      position: relative;
+      overflow: hidden;
+      padding: 70px 30px;
+      border-radius: 36px;
+      text-align: center;
+      color: #fff;
+      background: linear-gradient(
+        135deg,
+        #ff76b3,
+        #9b8cff
+      );
+      box-shadow: 0 25px 60px rgba(155,140,255,.25);
+    }
+
+    .cta-box::before,
+    .cta-box::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.12);
+    }
+
+    .cta-box::before {
+      left: -60px;
+      top: -70px;
+    }
+
+    .cta-box::after {
+      right: -50px;
+      bottom: -80px;
+    }
+
+    .cta-box h2 {
+      position: relative;
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .cta-box p {
+      position: relative;
+      margin-bottom: 28px;
+      opacity: .92;
+    }
+
+    .cta-box .button {
+      position: relative;
+      background: #fff;
+      color: #6f61c9;
+    }
+
+    /* =========================
+       Footer
+    ========================= */
+
+    footer {
+      padding: 35px 24px;
+      background: #302e37;
+      color: rgba(255,255,255,.72);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .footer-logo span {
+      color: #ff82b9;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      font-size: .82rem;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .copyright {
+      font-size: .75rem;
+      opacity: .55;
+      margin-top: 8px;
+    }
+
+    /* =========================
+       Responsive
+    ========================= */
+
+    @media (max-width: 850px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+      }
+
+      .hero-copy {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        min-height: 430px;
+      }
+
+      .features {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .studio-card {
+        grid-template-columns: 1fr;
+        padding: 35px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      header {
+        padding: 12px 18px;
+      }
+
+      .hero {
+        padding-top: 120px;
+      }
+
+      section {
+        padding: 75px 18px;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+
+      .hero-visual {
+        transform: scale(.88);
+        min-height: 390px;
+        margin-top: -15px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .concept-box,
+      .studio-card {
+        padding: 28px 22px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       Header
+  ========================== -->
+
+  <header>
+    <nav class="nav">
+      <a href="#" class="logo">
+        Hub <span>Fun!</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#features">Hub Fun!</a>
+        <a href="#studio">Studio</a>
+        <a href="#download">Download</a>
+      </div>
+    </nav>
+  </header>
+
+
+  <!-- =========================
+       Hero
+  ========================== -->
+
+  <main>
+
+    <section class="hero">
+      <div class="hero-inner">
+
+        <div>
+          <div class="eyebrow">
+            Hub Fun! Studio
+          </div>
+
+          <h1>
+            <span class="hub">Hub</span><br>
+            <span class="fun">Fun!</span>
+          </h1>
+
+          <p class="hero-copy">
+            推し活を、もっと楽しく。<br>
+            あちこちに散らばった「好きな情報」を、
+            ひとつの場所へ。
+          </p>
+
+          <div class="hero-buttons">
+            <!-- Google Play公開後にURLを変更 -->
+            <a href="#download" class="button button-primary">
+              Hub Fun! を見る →
+            </a>
+
+            <a href="#about" class="button button-secondary">
+              Hub Fun! について
+            </a>
+          </div>
+        </div>
+
+
+        <!-- アプリのイメージ -->
+        <div class="hero-visual">
+
+          <div class="blob"></div>
+
+          <div class="floating one">
+            ✨ 好きなものをまとめよう
+          </div>
+
+          <div class="floating two">
+            💕 推し活をもっと楽しく
+          </div>
+
+          <div class="phone">
+            <div class="phone-screen">
+
+              <div class="phone-title">
+                Hub Fun!
+              </div>
+
+              <div class="mini-card">
+                <span class="mini-icon pink">♡</span>
+                <span class="mini-text">
+                  推し
+                  <small>好きな人・作品をまとめる</small>
+                </span>
+              </div>
+
+              <div class="mini-card">
+                <span class="mini-icon yellow">★</span>
+                <span class="mini-text">
+                  イベント
+                  <small>予定をチェック</small>
+                </span>
+              </div>
+
+              <div class="mini-card">
+                <span class="mini-icon mint">⌖</span>
+                <span class="mini-text">
+                  スポット
+                  <small>行きたい場所を保存</small>
+                </span>
+              </div>
+
+              <div class="mini-card">
+                <span class="mini-icon blue">♧</span>
+                <span class="mini-text">
+                  通知
+                  <small>必要な情報をまとめて確認</small>
+                </span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         About
+    ========================== -->
+
+    <section id="about" class="concept">
+
+      <div class="section-inner">
+
+        <div class="section-heading">
+          <div class="label">About Hub Fun!</div>
+          <h2>届く情報を、必要な情報へ。</h2>
+        </div>
+
+        <div class="concept-box">
+
+          <div class="big-copy">
+            「好き」を中心に、<span>情報をひとつに。</span>
+          </div>
+
+          <p>
+            YouTubeなどの情報、スマートフォンに届く通知、
+            イベント、行きたいスポットなど、
+            推し活に必要な情報は意外といろいろな場所に散らばっています。
+            <br><br>
+            Hub Fun! は、そんな情報を自分の「好き」を中心にまとめて、
+            必要な情報へすぐアクセスできるようにするアプリです。
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         Features
+    ========================== -->
+
+    <section id="features">
+
+      <div class="section-inner">
+
+        <div class="section-heading">
+          <div class="label">Features</div>
+          <h2>Hub Fun! でできること</h2>
+          <p>
+            推し活に必要な情報を、シンプルにひとつの場所へ。
+          </p>
+        </div>
+
+
+        <div class="features">
+
+          <article class="feature">
+            <div class="feature-icon">♡</div>
+            <h3>推しをまとめる</h3>
+            <p>
+              好きな人・作品などを登録して、
+              自分だけの「推し」一覧を作れます。
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">★</div>
+            <h3>イベントを管理</h3>
+            <p>
+              ライブやイベントなど、
+              気になる予定をまとめて確認できます。
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">⌖</div>
+            <h3>スポットを保存</h3>
+            <p>
+              聖地やショップなど、
+              行きたい場所をまとめて管理できます。
+            </p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon">♧</div>
+            <h3>通知をまとめる</h3>
+            <p>
+              スマートフォンに届いた情報を、
+              必要なものとしてチェックできます。
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         Studio
+    ========================== -->
+
+    <section id="studio">
+
+      <div class="section-inner">
+
+        <div class="studio-card">
+
+          <div>
+            <div class="studio-badge">
+              About the Studio
+            </div>
+
+            <h2>Hub Fun! Studio</h2>
+
+            <p>
+              Hub Fun! Studio は、
+              「好きなものを、もっと身近に」をテーマに
+              アプリを制作しています。
+              <br><br>
+              日々の「これがあったら便利かも」を形にしながら、
+              楽しく使えるサービスを目指しています。
+            </p>
+          </div>
+
+          <div class="studio-message">
+            <strong>
+              Make your<br>
+              <span>Fun!</span>
+            </strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         Download
+    ========================== -->
+
+    <section id="download" class="cta">
+
+      <div class="section-inner">
+
+        <div class="cta-box">
+
+          <h2>
+            Hub Fun! と<br>
+            推し活をもっと楽しく。
+          </h2>
+
+          <p>
+            Android向けアプリ「Hub Fun!」
+          </p>
+
+          <!-- Google Play公開後にリンク先を設定 -->
+          <a
+            href="#"
+            class="button"
+            onclick="return false;"
+          >
+            Google Play
+            （近日公開）
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       Footer
+  ========================== -->
+
+  <footer>
+
+    <div class="footer-inner">
+
+      <div>
+        <div class="footer-logo">
+          Hub <span>Fun!</span> Studio
+        </div>
+
+        <div class="copyright">
+          © 2026 Hub Fun! Studio
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <!-- 公開済みのプライバシーポリシーURLに変更 -->
+        <a href="/privacy">Privacy Policy</a>
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
+```
