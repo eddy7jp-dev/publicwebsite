@@ -208,10 +208,12 @@
 
     .hero-visual {
       position: relative;
-      min-height: 450px;
+      min-height: 650px;
       display: flex;
       justify-content: center;
       align-items: center;
+      min-width: 0;
+      padding: 30px 70px 30px 20px;
     }
 
     .blob {
@@ -239,72 +241,63 @@
       }
     }
 
-    .phone {
+    .device-frame {
       position: relative;
-      width: 230px;
-      height: 460px;
-      padding: 10px;
-      border-radius: 36px;
-      background: #292832;
+      z-index: 2;
+      width: min(310px, 72vw);
+      aspect-ratio: 1 / 2;
+      padding: 9px;
+      border-radius: 42px;
+      background: #272631;
       box-shadow:
-        0 30px 60px rgba(50,40,70,.25),
-        0 0 0 8px rgba(255,255,255,.5);
-      transform: rotate(4deg);
+        0 30px 60px rgba(50,40,70,.24),
+        0 0 0 7px rgba(255,255,255,.72),
+        0 0 0 9px rgba(60,55,70,.08);
+      transform: rotate(3deg);
     }
 
-    .phone-screen {
+    .device-screen {
+      position: relative;
       width: 100%;
       height: 100%;
-      border-radius: 27px;
       overflow: hidden;
-      background: linear-gradient(160deg, #fff8fb, #f3f0ff);
-      padding: 22px 15px;
-    }
-
-    .phone-title {
-      font-size: 1.35rem;
-      font-weight: 900;
-      color: var(--dark);
-      margin-bottom: 16px;
-    }
-
-    .mini-card {
+      border-radius: 34px;
       background: #fff;
-      border-radius: 18px;
-      padding: 14px;
-      margin-bottom: 11px;
-      box-shadow: 0 6px 18px rgba(70,50,80,.08);
     }
 
-    .mini-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 8px;
-      font-size: 1.1rem;
-      font-weight: 900;
+    .device-screen::before {
+      content: "";
+      position: absolute;
+      z-index: 3;
+      top: 8px;
+      left: 50%;
+      width: 74px;
+      height: 18px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: #272631;
+      pointer-events: none;
     }
 
-    .pink { background: #ffdce9; }
-    .yellow { background: #fff0ae; }
-    .mint { background: #d5f6ee; }
-    .blue { background: #dcecff; }
-
-    .mini-text {
-      display: inline-block;
-      vertical-align: top;
-      font-size: .78rem;
-      font-weight: 800;
+    .device-speaker {
+      position: absolute;
+      z-index: 4;
+      top: 15px;
+      left: 50%;
+      width: 42px;
+      height: 4px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: rgba(255,255,255,.3);
+      pointer-events: none;
     }
 
-    .mini-text small {
+    .app-screenshot {
+      width: 100%;
+      height: 100%;
       display: block;
-      color: #99949e;
-      font-size: .65rem;
-      font-weight: 600;
+      object-fit: cover;
+      object-position: top center;
     }
 
     .floating {
@@ -319,16 +312,18 @@
     }
 
     .floating.one {
-      top: 55px;
-      right: 5px;
+      top: 85px;
+      right: 0;
       color: var(--pink);
+      white-space: nowrap;
     }
 
     .floating.two {
-      bottom: 55px;
-      left: 5px;
+      bottom: 80px;
+      left: 0;
       color: var(--mint);
       animation-delay: -2s;
+      white-space: nowrap;
     }
 
     @keyframes float {
@@ -680,6 +675,20 @@
     }
 
     @media (max-width: 560px) {
+      .hero-visual {
+        transform: scale(.88);
+        padding-left: 25px;
+        padding-right: 25px;
+      }
+
+      .floating.one {
+        right: -18px;
+      }
+
+      .floating.two {
+        left: -18px;
+      }
+
       header {
         padding: 12px 18px;
       }
@@ -697,9 +706,26 @@
       }
 
       .hero-visual {
-        transform: scale(.88);
-        min-height: 390px;
+        transform: scale(.92);
+        min-height: 620px;
         margin-top: -15px;
+        padding: 20px 45px;
+      }
+
+      .device-frame {
+        width: min(300px, 72vw);
+      }
+
+      .floating.one {
+        right: -5px;
+        top: 65px;
+        font-size: .72rem;
+      }
+
+      .floating.two {
+        left: -5px;
+        bottom: 65px;
+        font-size: .72rem;
       }
 
       .features {
@@ -797,51 +823,19 @@
             💕 推し活をもっと楽しく
           </div>
 
-          <div class="phone">
-            <div class="phone-screen">
-
-              <div class="phone-title">
-                Hub Fun!
-              </div>
-
-              <div class="mini-card">
-                <span class="mini-icon pink">♡</span>
-                <span class="mini-text">
-                  推し
-                  <small>好きな人・作品をまとめる</small>
-                </span>
-              </div>
-
-              <div class="mini-card">
-                <span class="mini-icon yellow">★</span>
-                <span class="mini-text">
-                  イベント
-                  <small>予定をチェック</small>
-                </span>
-              </div>
-
-              <div class="mini-card">
-                <span class="mini-icon mint">⌖</span>
-                <span class="mini-text">
-                  スポット
-                  <small>行きたい場所を保存</small>
-                </span>
-              </div>
-
-              <div class="mini-card">
-                <span class="mini-icon blue">♧</span>
-                <span class="mini-text">
-                  通知
-                  <small>必要な情報をまとめて確認</small>
-                </span>
-              </div>
-
+          <div class="device-frame" aria-label="Hub Fun! アプリ画面のプレビュー">
+            <div class="device-speaker" aria-hidden="true"></div>
+            <div class="device-screen">
+              <img
+                class="app-screenshot"
+                src="assets/hub-fun-real-screen.jpg"
+                alt="Hub Fun! アプリの実際の画面"
+              />
             </div>
           </div>
 
         </div>
 
-      </div>
     </section>
 
 
@@ -1041,7 +1035,7 @@
 
       <div class="footer-links">
         <!-- 公開済みのプライバシーポリシーURLに変更 -->
-        <a href="https://hubfun-privacy.hubfun-dev.workers.dev/">Privacy Policy</a>
+        <a href="/privacy">Privacy Policy</a>
       </div>
 
     </div>
